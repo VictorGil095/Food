@@ -29,13 +29,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private static final LatLng ADDS = new LatLng(54.7740587, 56.0205037);
     private static final LatLng ADDS1 = new LatLng(54.7072108, 55.996957);
     private static final LatLngBounds ADDSS = new LatLngBounds(new LatLng(54.7072108, 55.996957), new LatLng(54.7740587, 56.0205037));
-    TextView mTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        mTextView = (TextView) findViewById(R.id.adds);
         buildGoogleApiClient();
         mapView = (MapView) findViewById(R.id.map);
         mapView.onCreate(savedInstanceState);
@@ -102,7 +100,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onConnected(Bundle bundle) {
         mCurrentLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-        //mTextView.setText(String.valueOf(mCurrentLocation.getLatitude()) + '\n' + String.valueOf(mCurrentLocation.getLongitude()));
         startLocationUpdates();
     }
 
@@ -131,6 +128,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onLocationChanged(Location location) {
         mCurrentLocation = location;
-        //mTextView.setText(String.valueOf(mCurrentLocation.getLatitude()) + '\n' + String.valueOf(mCurrentLocation.getLongitude()));
     }
 }
